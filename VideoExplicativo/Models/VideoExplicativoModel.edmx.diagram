@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="2dcfc539d9d844b49d28d0b9c9bc6d7b" Name="Diagram1">
+        <EntityTypeShape EntityType="bdVideoExplicativoModel.tblUsuario" Width="1.5" PointX="0.75" PointY="1.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="bdVideoExplicativoModel.tblBonos" Width="1.5" PointX="3" PointY="1" />
+        <AssociationConnector Association="bdVideoExplicativoModel.FK__tblBonos__IdUsua__2C3393D0" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

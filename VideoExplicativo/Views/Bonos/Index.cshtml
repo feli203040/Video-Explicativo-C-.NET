@@ -1,0 +1,65 @@
+﻿@model IEnumerable<VideoExplicativo.Models.tblBonos>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<p>
+    @using (Html.BeginForm("Index", "Bonos", FormMethod.Post))
+    {
+        <label>Desde: </label><input type="date" name="Desde" />
+        <label>Hasta: </label><input type="date" name="Hasta" />
+        <label>Calcular: </label><input type="submit" value="Calcular" />
+    }
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Departamento)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Fecha)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Bono)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Motivo)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.tblUsuario.Usuario)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Departamento)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Fecha)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Bono)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Motivo)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.tblUsuario.Usuario)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.IdBono }) |
+            @Html.ActionLink("Details", "Details", new { id=item.IdBono }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.IdBono })
+        </td>
+    </tr>
+}
+
+</table>

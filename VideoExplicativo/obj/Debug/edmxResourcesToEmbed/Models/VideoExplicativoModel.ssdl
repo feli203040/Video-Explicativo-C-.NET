@@ -1,0 +1,41 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="bdVideoExplicativoModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="tblBonos">
+    <Key>
+      <PropertyRef Name="IdBono" />
+    </Key>
+    <Property Name="IdBono" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Departamento" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Fecha" Type="date" Nullable="false" />
+    <Property Name="Bono" Type="int" Nullable="false" />
+    <Property Name="Motivo" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="IdUsuario" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="tblUsuario">
+    <Key>
+      <PropertyRef Name="IdUsuario" />
+    </Key>
+    <Property Name="IdUsuario" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Usuario" Type="varchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <Association Name="FK__tblBonos__IdUsua__2C3393D0">
+    <End Role="tblUsuario" Type="Self.tblUsuario" Multiplicity="1" />
+    <End Role="tblBonos" Type="Self.tblBonos" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblUsuario">
+        <PropertyRef Name="IdUsuario" />
+      </Principal>
+      <Dependent Role="tblBonos">
+        <PropertyRef Name="IdUsuario" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="bdVideoExplicativoModelStoreContainer">
+    <EntitySet Name="tblBonos" EntityType="Self.tblBonos" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tblUsuario" EntityType="Self.tblUsuario" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK__tblBonos__IdUsua__2C3393D0" Association="Self.FK__tblBonos__IdUsua__2C3393D0">
+      <End Role="tblUsuario" EntitySet="tblUsuario" />
+      <End Role="tblBonos" EntitySet="tblBonos" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

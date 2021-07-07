@@ -1,0 +1,43 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="bdVideoExplicativoModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="tblUsuario">
+    <Key>
+      <PropertyRef Name="IdUsuario" />
+    </Key>
+    <Property Name="IdUsuario" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Usuario" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="tblBonos" Relationship="bdVideoExplicativoModel.FK__tblBonos__IdUsua__2C3393D0" FromRole="tblUsuario" ToRole="tblBonos" />
+  </EntityType>
+  <EntityContainer Name="bdVideoExplicativoEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="tblUsuario" EntityType="Self.tblUsuario" />
+    <EntitySet Name="tblBonos" EntityType="bdVideoExplicativoModel.tblBonos" />
+    <AssociationSet Name="FK__tblBonos__IdUsua__2C3393D0" Association="bdVideoExplicativoModel.FK__tblBonos__IdUsua__2C3393D0">
+      <End Role="tblUsuario" EntitySet="tblUsuario" />
+      <End Role="tblBonos" EntitySet="tblBonos" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="tblBonos">
+    <Key>
+      <PropertyRef Name="IdBono" />
+    </Key>
+    <Property Name="IdBono" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Departamento" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Fecha" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="Bono" Type="Int32" Nullable="false" />
+    <Property Name="Motivo" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="IdUsuario" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="tblUsuario" Relationship="bdVideoExplicativoModel.FK__tblBonos__IdUsua__2C3393D0" FromRole="tblBonos" ToRole="tblUsuario" />
+  </EntityType>
+  <Association Name="FK__tblBonos__IdUsua__2C3393D0">
+    <End Type="bdVideoExplicativoModel.tblUsuario" Role="tblUsuario" Multiplicity="1" />
+    <End Type="bdVideoExplicativoModel.tblBonos" Role="tblBonos" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblUsuario">
+        <PropertyRef Name="IdUsuario" />
+      </Principal>
+      <Dependent Role="tblBonos">
+        <PropertyRef Name="IdUsuario" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>
